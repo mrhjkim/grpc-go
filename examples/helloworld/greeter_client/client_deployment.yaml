@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloworld-client
+  namespace: teamdev3
+  labels:
+    app: helloworld-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: helloworld-client
+  template:
+    metadata:
+      labels:
+        app: helloworld-client
+    spec:
+      containers:
+      - name: helloworld-client
+        image: camel.uangel.com:5000/helloworld_client:latest
+        command: ["./greeter_client"]
+        args: ["--addr=helloworld-server:50051"]

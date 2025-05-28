@@ -8,3 +8,8 @@ They are arranged as follows:
 * `features` - a collection of examples, each focused on a single gRPC feature
 
 `data` is a directory containing data used by the examples, e.g. TLS certificates.
+
+# Docker에서 실행하는 방법
+## helloworld
+cd .. // grpc-go 디렉토리로 이동
+docker build -t <TAG> -f examples/helloworld/Dockerfile .

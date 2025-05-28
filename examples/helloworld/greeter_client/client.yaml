@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: helloworld-client
+  namespace: teamdev3
+  labels:
+    app: helloworld-client
+spec:
+  template:
+    spec:
+      containers:
+      - name: helloworld-client
+        image: camel.uangel.com:5000/helloworld_client:latest
+        command: ["./greeter_client"]
+        args: ["--addr=helloworld-server:50051"]
+      restartPolicy: Never
+  backoffLimit: 4
+  ttlSecondsAfterFinished: 10
