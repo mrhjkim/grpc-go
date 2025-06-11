@@ -175,10 +175,10 @@ func main() {
 	client := pb.NewRouteGuideClient(conn)
 
 	// Looking for a valid feature
-	printFeature(client, &pb.Point{Latitude: 409146138, Longitude: -746188906})
+	printFeature(client, &pb.Point{Latitude: 409146138, Longitude: -746188906, Data: []byte{0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08}})
 
 	// Feature missing.
-	printFeature(client, &pb.Point{Latitude: 0, Longitude: 0})
+	printFeature(client, &pb.Point{Latitude: 0, Longitude: 0, Data: []byte{0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f}})
 
 	// Looking for features between 40, -75 and 42, -73.
 	printFeatures(client, &pb.Rectangle{
